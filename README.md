@@ -1,6 +1,6 @@
-# HanTran
+# Bessel-Hankel
 
-Implementations of (Guptasarma and Singh, 1997) and (Ogata, 2005) for **Hankel transform**, and calculations of **Bessel function**s, derivatives and their zeros.
+**Bessel function** and **Hankel transform**
 
 [中文版](README.cn.md)
 

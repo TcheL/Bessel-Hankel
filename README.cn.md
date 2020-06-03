@@ -1,6 +1,6 @@
-# HanTran
+# Bessel-Hankel
 
-(Guptasarma and Singh, 1997) 和 (Ogata, 2005) 文中 **Hankel 变换**的实现，和 **Bessel 函数**、导数及其零点的计算。
+**Bessel 函数**和 **Hankel 变换**
 
 [Switch to English](README.md)
 
