@@ -71,8 +71,8 @@ $$ Z_\nu(x) Z_\nu''(x) = \frac{1}{x^2} \left\lbrace (\nu^2 - \nu - x^2) [Z_\nu(x
 根据 [Wikipedia](https://en.wikipedia.org/wiki/Halley's_method#Method)，可用于求解 Bessel 函数零点的 Halley 法迭代式为：
 
 $$ \begin{align*}
-     x_{n + 1} & = x_n - \frac{2 Z_\nu(x_n) Z_\nu'(x_n) }{ 2 [Z_\nu'(x)]^2 - Z_\nu(x) Z_\nu''(x) } \newline
-               & = x_n - \frac{ 2 x Z_\nu(x) [ \nu Z_\nu(x) - x Z_{\nu + 1}(x) ] }{ 2 x^2 [Z_{\nu + 1}(x)]^2 - (4\nu + 1) x Z_\nu(x) Z_{\nu + 1}(x) + (\nu^2 + \nu + x^2) [Z_\nu(x)]^2}
+     x_{n + 1} & = x_n - \frac{2 Z_\nu(x_n) Z_\nu'(x_n) }{ 2 [Z_\nu'(x_n)]^2 - Z_\nu(x_n) Z_\nu''(x_n) } \newline
+               & = x_n - \frac{ 2 x_n Z_\nu(x_n) [ \nu Z_\nu(x_n) - x_n Z_{\nu + 1}(x_n) ] }{ 2 x_n^2 [Z_{\nu + 1}(x_n)]^2 - (4\nu + 1) x_n Z_\nu(x_n) Z_{\nu + 1}(x_n) + (\nu^2 + \nu + x_n^2) [Z_\nu(x_n)]^2}
    \end{align*} ​$$
 
 ### Hankel 变换
