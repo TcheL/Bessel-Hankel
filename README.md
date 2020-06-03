@@ -2,7 +2,7 @@
 
 Implementations of (Guptasarma and Singh, 1997) and (Ogata, 2005) for **Hankel transform**, and calculations of **Bessel function**s, derivatives and their zeros.
 
-[中文版](REAMD.cn.md)
+[中文版](README.cn.md)
 
 ## License
 
@@ -111,11 +111,11 @@ $$ \int_0^\infty f(x) J_\nu(x) dx \approx \pi \sum_{k = 1}^{\infty} \omega_{\nu 
 
 Set $ x = r \lambda $, so that $ \lambda = x/r $ and $ d\lambda = 1/r \cdot dx $, and $ x = \pi/h \cdot \psi(h \xi_{\nu k}) $, we can reduce:
 
-$$ \begin{align}
+$$ \begin{align*}
      \int_0^\infty f(\lambda) J_\nu(r \lambda) \lambda d\lambda & = \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) \frac{x}{r} \cdot \frac{1}{r} dx \newline
                                                                 & = \frac{1}{r^2} \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) x dx \newline
                                                                 & \approx \frac{1}{r^2} \left[ \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
-   \end{align} $$
+   \end{align*} $$
 
 The formula is applicable for Hankel transform based on Bessel function of an **arbitrary** order.
 

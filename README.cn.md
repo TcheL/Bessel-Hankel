@@ -6,8 +6,6 @@
 
 ## 开源协议
 
-[The MIT License](http://tchel.mit-license.org/)
-
 [MIT 协议](http://tchel.mit-license.org/)
 
 ## 作者
@@ -113,11 +111,11 @@ $$ \int_0^\infty f(x) J_\nu(x) dx \approx \pi \sum_{k = 1}^{\infty} \omega_{\nu 
 
 设 $ x = r \lambda $，则 $ \lambda = x/r $ 且 $ d\lambda = 1/r \cdot dx $，又有 $ x = \pi/h \cdot \psi(h \xi_{\nu k}) $，可得：
 
-$$ \begin{align}
+$$ \begin{align*}
      \int_0^\infty f(\lambda) J_\nu(r \lambda) \lambda d\lambda & = \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) \frac{x}{r} \cdot \frac{1}{r} dx \newline
                                                                 & = \frac{1}{r^2} \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) x dx \newline
                                                                 & \approx \frac{1}{r^2} \left[ \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
-   \end{align} $$
+   \end{align*} $$
 
 此公式适用于基于**任意**阶 Bessel 函数的 Hankel 变换。
 
@@ -130,13 +128,10 @@ $$ \begin{align}
 在本源文件中有两个预处理宏：
 - **MOREAU** 用于调用 Moreau 方法来计算第一类和第二类 Bessel 函数及其一阶导数；如未定义，则调用 `fortran` 内部子程序来计算。
 - **HALLEY** 用于调用 Halley 方法来计算第一类和第二类 Bessel 函数的零点；如未定义，则调用固定点迭代法来计算。
-- **HALLEY** for using Halley's method to solve zeros of Bessel function of the 1st and 2nd kind, and if not defined, using the fixed point iteration to solve.
 
 由于本源文件不包含主程序，例如，可通过命令 `$ gfortran -DHALLEY -c Bessel_Function.F90` 来编译此程序，但无法运行之。
 
 此外， [Bessel Zero Solver](https://ww2.mathworks.cn/matlabcentral/fileexchange/48403-bessel-zero-solver) 是一个有效可靠的用于基于 Halley 方法求解第一类和第二类 Bessel 函数零点的 `matlab` 函数。
-
-### Guptasarma_1997
 
 ### Guptasarma_1997
 
