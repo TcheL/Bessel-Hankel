@@ -1,36 +1,38 @@
 # HanTran
 
-Implementations of (Guptasarma and Singh, 1997) and (Ogata, 2005) for **Hankel transform**, and calculations of **Bessel function**s, derivatives and their zeros.
+(Guptasarma and Singh, 1997) 和 (Ogata, 2005) 文中 **Hankel 变换**的实现，和 **Bessel 函数**、导数及其零点的计算。
 
-[中文版](REAMD.cn.md)
+[Switch to English](README.md)
 
-## License
+## 开源协议
 
 [The MIT License](http://tchel.mit-license.org/)
 
-## Author
+[MIT 协议](http://tchel.mit-license.org/)
+
+## 作者
 
 Tche LIU, seistche@gmail.com, USTC
 
-## Methodology
+## 方法
 
-The repository includes some examples for Hankel transform, and involves calculations of Bessel functions of the 1st kind and 2nd kind, their derivatives of the 1st order and 2nd order, and their zeros. Next, I will show you some mathematical formulas about calculations of Bessel function's derivatives and zeros, and Hankel transform.
+本仓库包含了一些 Hankel 变换的例子，牵涉到了第一类和第二类 Bessel 函数、其一阶和二阶导数及其零点的计算。下文中将给出一些与 Bessel 函数导数和零点，以及 Hankel 变换的计算有关的数学公式。
 
-### Bessel function's derivatives
+### Bessel 函数的导数
 
-Represent $J_\nu(x)$ or $Y_\nu(x)$ by $Z_\nu(x)$ in the follows, and there are recurrence relations of Bessel function:
+下文中以 $Z_\nu(x)$ 表示 $J_\nu(x)$ 或 $Y_\nu(x)$ by $Z_\nu(x)$，根据 Bessel 函数的递推关系：
 
 $$ x Z_{\nu - 1}(x) + x Z_{\nu + 1}(x) = 2\nu Z_\nu(x) $$
 
 $$ Z_\nu'(x) = \frac{\nu}{x} Z_\nu(x) - Z_{\nu + 1}(x) $$
 
-so that
+可得
 
 $$ Z_{\nu + 2}(x) = \frac{2(\nu + 1)}{x} Z_{\nu + 1}(x) - Z_\nu(x) $$
 
 $$ Z_{\nu + 1}'(x) = \frac{\nu + 1}{x} Z_{\nu + 1}(x) - Z_{\nu + 2}(x) $$
 
-And it's not difficult to reduce the 2nd derivative:
+不难得出：
 
 $$ \begin{align*} 
      Z_\nu''(x) & = \frac{d}{dx} \left[ \frac{\nu}{x} Z_\nu(x) - Z_{\nu + 1}(x) \right] \newline
@@ -40,27 +42,27 @@ $$ \begin{align*}
                 & = \frac{1}{x^2} \left[ (\nu^2 - \nu - x^2) Z_\nu(x) + x Z_{\nu + 1}(x) \right]
    \end{align*} ​$$
 
-and
+和
 
 $$ \begin{align*} 
      Z_\nu''(x) & = \left( \frac{\nu^2}{x^2} - 1 \right) Z_\nu(x) - \frac{1}{x} \left[ \frac{\nu}{x} Z_\nu(x) - Z_{\nu + 1}(x) \right] \newline
                 & = \left( \frac{\nu^2}{x^2} - 1 \right) Z_\nu(x) - \frac{1}{x} Z_\nu'(x)
    \end{align*} ​$$
 
-### Bessel function's zeros
+### Bessel 函数的零点
 
-#### Fixed point iteration
+#### 固定点迭代
 
-According to [Wikipedia](https://en.wikipedia.org/wiki/Fixed-point_iteration#Applications), the fixed point iteration to solve zeros of Bessel function is:
+根据 [Wikipedia](https://en.wikipedia.org/wiki/Fixed-point_iteration#Applications)，可用于求解 Bessel 函数零点的固定点迭代式为：
 
 $$ \begin{align*}
      x_{n + 1} & = x_n - \frac{Z_\nu(x_n)}{Z_\nu'(x_n)} \newline
                & = x_n - \frac{x_n Z_\nu(x_n)}{\nu Z_\nu(x_n) - x_n Z_{\nu + 1}(x_n)}
    \end{align*} ​$$
 
-#### Halley's method
+#### Halley 方法
 
-Based on the above formulas, these results of product are:
+基于以上公式，以下乘积的结果为：
 
 $$ Z_\nu(x) Z_\nu'(x) = Z_\nu(x) \left[ \frac{\nu}{x} Z_\nu(x) - Z_{\nu + 1}(x) \right] = \frac{1}{x^2} x Z_\nu(x) \left[ \nu Z_\nu(x) - x Z_{\nu + 1}(x) \right] $$
 
@@ -68,30 +70,30 @@ $$ [Z_\nu'(x)]^2 = \frac{\nu^2}{x^2} Z_\nu(x) - \frac{2\nu}{x} Z_\nu(x) Z_{\nu +
 
 $$ Z_\nu(x) Z_\nu''(x) = \frac{1}{x^2} \left\lbrace (\nu^2 - \nu - x^2) [Z_\nu(x)]^2 + x Z_\nu(x) Z_{\nu + 1}(x) \right\rbrace $$
 
-According to [Wikipedia](https://en.wikipedia.org/wiki/Halley's_method#Method), the iteration of Halley's method to solve zeros of Bessel function is:
+根据 [Wikipedia](https://en.wikipedia.org/wiki/Halley's_method#Method)，可用于求解 Bessel 函数零点的 Halley 法迭代式为：
 
 $$ \begin{align*}
      x_{n + 1} & = x_n - \frac{2 Z_\nu(x_n) Z_\nu'(x_n) }{ 2 [Z_\nu'(x)]^2 - Z_\nu(x) Z_\nu''(x) } \newline
                & = x_n - \frac{ 2 x Z_\nu(x) [ \nu Z_\nu(x) - x Z_{\nu + 1}(x) ] }{ 2 x^2 [Z_{\nu + 1}(x)]^2 - (4\nu + 1) x Z_\nu(x) Z_{\nu + 1}(x) + (\nu^2 + \nu + x^2) [Z_\nu(x)]^2}
    \end{align*} ​$$
 
-### Hankel transform
+### Hankel 变换
 
-#### Definition
+#### 定义
 
-According to [Wikipedia](https://en.wikipedia.org/wiki/Hankel_transform#Definition), the Hankel transform of order $\nu$ of a function $f(r)$ is given by:
+根据 [Wikipedia](https://en.wikipedia.org/wiki/Hankel_transform#Definition)，函数 $f(r)$ 的 $\nu$ 阶 Hankel 变换为：
 
 $$ F_\nu(k) = \int_0^\infty f(r) J_\nu(k r) r dr $$
 
 #### (Guptasarma and Singh, 1997)
 
-The type of Hankel transform of this paper is:
+文中的 Hankel 变换类型为：
 
 $$ f(r) = \int_0^\infty K(\lambda) J_i(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i $$
 
-The formula is **only** applicable for Hankel transform based on Bessel function of order 1 and 2.
+此近似公式**仅**适用于基于一阶或二阶 Bessel 函数的 Hankel 变换。
 
-There are some examples of standard Hankel transform to verify our programs in this paper:
+文中给出了一些可用于检验程序的标准 Hankel 变换示例：
 
 |                         $K(\lambda)$                         | $J_\nu$ |                            $f(r)$                            |
 | :----------------------------------------------------------: | :-----: | :----------------------------------------------------------: |
@@ -105,11 +107,11 @@ There are some examples of standard Hankel transform to verify our programs in t
 
 #### (Ogata, 2005)
 
-The approximation of integrals of the Hankel transformation type of this paper is:
+文中的 Hankel 变换型积分的近似公式为：
 
 $$ \int_0^\infty f(x) J_\nu(x) dx \approx \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) J_\nu \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) \psi'(h \xi_{\nu k}) $$
 
-Set $ x = r \lambda $, so that $ \lambda = x/r $ and $ d\lambda = 1/r \cdot dx $, and $ x = \pi/h \cdot \psi(h \xi_{\nu k}) $, we can reduce:
+设 $ x = r \lambda $，则 $ \lambda = x/r $ 且 $ d\lambda = 1/r \cdot dx $，又有 $ x = \pi/h \cdot \psi(h \xi_{\nu k}) $，可得：
 
 $$ \begin{align}
      \int_0^\infty f(\lambda) J_\nu(r \lambda) \lambda d\lambda & = \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) \frac{x}{r} \cdot \frac{1}{r} dx \newline
@@ -117,37 +119,43 @@ $$ \begin{align}
                                                                 & \approx \frac{1}{r^2} \left[ \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
    \end{align} $$
 
-The formula is applicable for Hankel transform based on Bessel function of an **arbitrary** order.
+此公式适用于基于**任意**阶 Bessel 函数的 Hankel 变换。
 
-## Implementation
+## 实现
 
 ### Bessel_Function
 
-[Bessel_Function](Bessel_Function.F90) is a `fortran` module for calculations of Bessel functions of the 1st and 2nd kind, their derivative of the 1st and 2nd order, and zeros of original functions and derivations of the 1st order. The module is mainly modified from [mjyzo.f90](http://jean-pierre.moreau.pagesperso-orange.fr/Fortran/mjyzo_f90.txt).
+[Bessel_Function](Bessel_Function.F90) 是一个用于计算第一类和第二类 Bessel 函数、其一阶和二阶导数及其原函数和一阶导数的零点的 `fortran` 模块。该模块主要由 [mjyzo.f90](http://jean-pierre.moreau.pagesperso-orange.fr/Fortran/mjyzo_f90.txt) 修改而来。
 
-There are two macros for preprocessing in this source file: 
-- **MOREAU** for using Moreau's method to calculate Bessel functions of the 1st and 2nd kind and their derivatives of the 1st order; and if not defined, using `fortran` intrinsic functions to calculate.
-- **HALLEY** for using Halley's method to solve zeros of Bessel function of the 1st and 2nd kind; and if not defined, using the fixed point iteration to solve.
+在本源文件中有两个预处理宏：
+- **MOREAU** 用于调用 Moreau 方法来计算第一类和第二类 Bessel 函数及其一阶导数；如未定义，则调用 `fortran` 内部子程序来计算。
+- **HALLEY** 用于调用 Halley 方法来计算第一类和第二类 Bessel 函数的零点；如未定义，则调用固定点迭代法来计算。
+- **HALLEY** for using Halley's method to solve zeros of Bessel function of the 1st and 2nd kind, and if not defined, using the fixed point iteration to solve.
 
-Because the source file has no main program, as an example, you can compile it by `$ gfortran -DHALLEY -c Bessel_Function.F90`, but CAN'T run it.
+由于本源文件不包含主程序，例如，可通过命令 `$ gfortran -DHALLEY -c Bessel_Function.F90` 来编译此程序，但无法运行之。
 
-Besides, [Bessel Zero Solver](https://ww2.mathworks.cn/matlabcentral/fileexchange/48403-bessel-zero-solver) is an efficient and reliable `matlab` function to solve zeros of Bessel function of the 1st and 2nd kind based on Halley's method.
+此外， [Bessel Zero Solver](https://ww2.mathworks.cn/matlabcentral/fileexchange/48403-bessel-zero-solver) 是一个有效可靠的用于基于 Halley 方法求解第一类和第二类 Bessel 函数零点的 `matlab` 函数。
 
 ### Guptasarma_1997
 
-[Guptasarma_1997](Guptasarma_1997.F90) is a independent program to implement the methodology of (Guptasarma and Singh, 1997), and includes all examples in this paper.
+### Guptasarma_1997
 
-There is a macro for preprocessing in this source file: **FAST** for using less sample points to faster finish the Hankel transform; and if not defined, using more sample points to more exactly finish.
+[Guptasarma_1997](Guptasarma_1997.F90) 是一个独立的程序，它实现了 (Guptasarma and Singh, 1997) 的方法论，包含了该文中的所有例子。
 
-For example, you can compile the source file by `$ gfortran -DFAST Guptasarma_1997.F90 -o Guptasarma`, and run the program by `$ ./Guptasarma`.
+在本源文件中有一个预处理宏：**FAST** 用于采用更少的采样点来更快速地完成 Hankel 变换；如未定义，则采用更多的采样点来更准确地完成。
+
+例如，可通过命令 `$ gfortran -DFAST Guptasarma_1997.F90 -o Guptasarma` 来编译此源文件，且以命令 `$ ./Guptasarma` 运行之。
 
 ### Ogata_2005
 
-[Ogata_2005](Ogata_2005.F90) is a program based on [the Bessel_Function module](Bessel_Function.F90) to implement the methodology of (Ogata, 2005) to Hankel transform.
+[Ogata_2005](Ogata_2005.F90) 是一个基于 [Bessel_Function 模块](Bessel_Function.F90)的程序，它将 (Ogata, 2005) 的方法论应用到了 Hankel 变换上。
 
-For example, you can compile the source file by `$ gfortran -DHALLEY Bessel_Function.F90 Ogata_2005.F90 -o Ogata`, and run the program by `$ ./Ogata`.
+例如，可通过命令 `$ gfortran -DHALLEY Bessel_Function.F90 Ogata_2005.F90 -o Ogata` 来完成此程序的编译，并以命令 `$ ./Ogata` 运行之。
+
+## 参考文献
 
 ## References
 
 - Guptasarma and Singh, 1997. **New digital linear filters for Hankel J_0 and J_1 transforms**. Geophysical Prospecting, 45, 745-762.
 - Ogata, 2005. **A numerical integration formula based on the Bessel functions**. Publ. RIMS, 41, 949-970.
+
