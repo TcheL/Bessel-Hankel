@@ -12,8 +12,8 @@ program main
   use Bessel_Function
   implicit none
 
-  ! Hankel transform: https://en.wikipedia.org/wiki/Hankel_transform#Definition
-  ! F(r) = \int_0^\infty f(\lambda) J_nu(r \lambda) \lambda d\lambda
+  ! Hankel transform, https://en.wikipedia.org/wiki/Hankel_transform#Definition
+  !   $ F(r) = \int_0^\infty f(\lambda) J_nu(r \lambda) \lambda d\lambda $
 
   integer, parameter :: nRoots = 500, nSample = 400
   real(kind = KV), parameter :: pi = 3.141592653589793d0, steph = 1.0d-5, &

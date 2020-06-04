@@ -118,8 +118,8 @@ end module exampleFunctions
 
 module HankelTransform
 
-  ! Hankel transform, i.e. equation (1) in (Guptasarma and Singh, 1997)
-  ! f(r) = \int_0^\infty K(\lambda) J_i(r \lambda) d\lambda
+  ! Hankel transform, i.e. equation (1) in (Guptasarma and Singh, 1997):
+  !   $ f(r) = \int_0^\infty K(\lambda) J_i(r \lambda) d\lambda $
 
   use exampleFunctions, only: myKind
   implicit none

@@ -114,7 +114,7 @@ $$ \int_0^\infty f(x) J_\nu(x) dx \approx \pi \sum_{k = 1}^{\infty} \omega_{\nu 
 $$ \begin{align*}
      \int_0^\infty f(\lambda) J_\nu(r \lambda) \lambda d\lambda & = \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) \frac{x}{r} \cdot \frac{1}{r} dx \newline
                                                                 & = \frac{1}{r^2} \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) x dx \newline
-                                                                & \approx \frac{1}{r^2} \left[ \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
+                                                                & \approx \frac{1}{r^2} \left[ \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
    \end{align*} $$
 
 此公式适用于基于**任意**阶 Bessel 函数的 Hankel 变换。

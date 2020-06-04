@@ -114,7 +114,7 @@ Set $ x = r \lambda $, so that $ \lambda = x/r $ and $ d\lambda = 1/r \cdot dx $
 $$ \begin{align*}
      \int_0^\infty f(\lambda) J_\nu(r \lambda) \lambda d\lambda & = \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) \frac{x}{r} \cdot \frac{1}{r} dx \newline
                                                                 & = \frac{1}{r^2} \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) x dx \newline
-                                                                & \approx \frac{1}{r^2} \left[ \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
+                                                                & \approx \frac{1}{r^2} \left[ \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
    \end{align*} $$
 
 The formula is applicable for Hankel transform based on Bessel function of an **arbitrary** order.
@@ -143,7 +143,7 @@ For example, you can compile the source file by `$ gfortran -DFAST Guptasarma_19
 
 ### Ogata_2005
 
-[Ogata_2005](Ogata_2005.F90) is a program based on [the Bessel_Function module](Bessel_Function.F90) to implement the methodology of (Ogata, 2005) to Hankel transform.
+[Ogata_2005](Ogata_2005.F90) is a program based on [the Bessel_Function module](Bessel_Function.F90) to apply the methodology of (Ogata, 2005) to Hankel transform.
 
 For example, you can compile the source file by `$ gfortran -DHALLEY Bessel_Function.F90 Ogata_2005.F90 -o Ogata`, and run the program by `$ ./Ogata`.
 
