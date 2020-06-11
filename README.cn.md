@@ -8,11 +8,11 @@
 
 [MIT 协议](http://tchel.mit-license.org/)
 
-## 作者
+## 联系作者
 
 Tche LIU, seistche@gmail.com, USTC
 
-## 方法
+## 理论方法
 
 本仓库包含了一些 Hankel 变换的例子，牵涉到了第一类和第二类 Bessel 函数、其一阶和二阶导数及其零点的计算。下文中将给出一些与 Bessel 函数导数和零点，以及 Hankel 变换的计算有关的数学公式。
 
@@ -119,7 +119,7 @@ $$ \begin{align*}
 
 此公式适用于基于**任意**阶 Bessel 函数的 Hankel 变换。
 
-## 实现
+## 具体实现
 
 ### Bessel_Function
 
@@ -148,8 +148,6 @@ $$ \begin{align*}
 例如，可通过命令 `$ gfortran -DHALLEY Bessel_Function.F90 Ogata_2005.F90 -o Ogata` 来完成此程序的编译，并以命令 `$ ./Ogata` 运行之。
 
 ## 参考文献
-
-## References
 
 - Guptasarma and Singh, 1997. **New digital linear filters for Hankel J_0 and J_1 transforms**. Geophysical Prospecting, 45, 745-762.
 - Ogata, 2005. **A numerical integration formula based on the Bessel functions**. Publ. RIMS, 41, 949-970.
