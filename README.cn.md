@@ -85,7 +85,7 @@ $$ F_\nu(k) = \int_0^\infty f(r) J_\nu(k r) r dr $$
 
 #### (Guptasarma and Singh, 1997)
 
-文中的 Hankel 变换类型为：
+文中的 Hankel 变换类型为（式 2 和 3）：
 
 $$ f(r) = \int_0^\infty K(\lambda) J_i(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i $$
 
@@ -105,17 +105,22 @@ $$ f(r) = \int_0^\infty K(\lambda) J_i(r \lambda) d\lambda \approx \frac{1}{r} \
 
 #### (Ogata, 2005)
 
-文中的 Hankel 变换型积分的近似公式为：
+文中的 Hankel 变换型积分的近似公式为（式 5.2）：
 
-$$ \int_0^\infty f(x) J_\nu(x) dx \approx \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) J_\nu \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) \psi'(h \xi_{\nu k}) $$
+$$ \begin{align*}
+  \int_0^\infty f(x) J_\nu(x) dx & \approx \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f(x) J_\nu(x) \psi'(t) \newline
+                                 & = \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) J_\nu \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) \psi'(h \xi_{\nu k}) \newline
+\end{align*}$$
 
-设 $ x = r \lambda $，则 $ \lambda = x/r $ 且 $ d\lambda = 1/r \cdot dx $，又有 $ x = \pi/h \cdot \psi(h \xi_{\nu k}) $，可得：
+其中 $ x = \pi / h \cdot \psi(t) $，$ \psi(t) = t \tanh(\pi / 2 \cdot \sinh t) $ 且 $ t = h \xi_{\nu k} $.
+
+设 $ x = r \lambda ​$，则 $ \lambda = x/r ​$ 且 $ d\lambda = 1/r \cdot dx ​$，又有 $ x = \pi/h \cdot \psi(h \xi_{\nu k}) ​$，可得：
 
 $$ \begin{align*}
      \int_0^\infty f(\lambda) J_\nu(r \lambda) \lambda d\lambda & = \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) \frac{x}{r} \cdot \frac{1}{r} dx \newline
                                                                 & = \frac{1}{r^2} \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) x dx \newline
                                                                 & \approx \frac{1}{r^2} \left[ \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
-   \end{align*} $$
+   \end{align*} ​$$
 
 此公式适用于基于**任意**阶 Bessel 函数的 Hankel 变换。
 
@@ -149,6 +154,6 @@ $$ \begin{align*}
 
 ## 参考文献
 
-- Guptasarma and Singh, 1997. **New digital linear filters for Hankel J_0 and J_1 transforms**. Geophysical Prospecting, 45, 745-762.
-- Ogata, 2005. **A numerical integration formula based on the Bessel functions**. Publ. RIMS, 41, 949-970.
+- Guptasarma and Singh, 1997. **New digital linear filters for Hankel J_0 and J_1 transforms**. Geophysical Prospecting, 45, 745-762. [https://doi.org/10.1046/j.1365-2478.1997.500292.x](https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1365-2478.1997.500292.x)
+- Ogata, 2005. **A numerical integration formula based on the Bessel functions**. Publ. RIMS, 41, 949-970. [https://doi.org/10.2977/prims/1145474602](https://www.ems-ph.org/journals/show_abstract.php?issn=0034-5318&vol=41&iss=4&rank=8)
 

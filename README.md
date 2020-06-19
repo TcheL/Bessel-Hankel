@@ -85,7 +85,7 @@ $$ F_\nu(k) = \int_0^\infty f(r) J_\nu(k r) r dr $$
 
 #### (Guptasarma and Singh, 1997)
 
-The type of Hankel transform of this paper is:
+The type of Hankel transform of this paper is (equations 2 and 3):
 
 $$ f(r) = \int_0^\infty K(\lambda) J_i(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i $$
 
@@ -105,17 +105,22 @@ There are some examples of standard Hankel transform to verify our programs in t
 
 #### (Ogata, 2005)
 
-The approximation of integrals of the Hankel transformation type of this paper is:
+The approximation of integrals of the Hankel transformation type of this paper is (equation 5.2):
 
-$$ \int_0^\infty f(x) J_\nu(x) dx \approx \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) J_\nu \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) \psi'(h \xi_{\nu k}) $$
+$$ \begin{align*}
+  \int_0^\infty f(x) J_\nu(x) dx & \approx \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f(x) J_\nu(x) \psi'(t) \newline
+                                 & = \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) J_\nu \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) \psi'(h \xi_{\nu k}) \newline
+\end{align*}$$
 
-Set $ x = r \lambda $, so that $ \lambda = x/r $ and $ d\lambda = 1/r \cdot dx $, and $ x = \pi/h \cdot \psi(h \xi_{\nu k}) $, we can reduce:
+where $ x = \pi / h \cdot \psi(t) $, $ \psi(t) = t \tanh(\pi / 2 \cdot \sinh t) $ and $ t = h \xi_{\nu k} $.
+
+Set $ x = r \lambda ​$, so that $ \lambda = x/r ​$ and $ d\lambda = 1/r \cdot dx ​$, and $ x = \pi/h \cdot \psi(h \xi_{\nu k}) ​$, we can reduce:
 
 $$ \begin{align*}
      \int_0^\infty f(\lambda) J_\nu(r \lambda) \lambda d\lambda & = \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) \frac{x}{r} \cdot \frac{1}{r} dx \newline
                                                                 & = \frac{1}{r^2} \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) x dx \newline
                                                                 & \approx \frac{1}{r^2} \left[ \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
-   \end{align*} $$
+   \end{align*} ​$$
 
 The formula is applicable for Hankel transform based on Bessel function of an **arbitrary** order.
 
@@ -149,5 +154,6 @@ For example, you can compile the source file by `$ gfortran -DHALLEY Bessel_Func
 
 ## References
 
-- Guptasarma and Singh, 1997. **New digital linear filters for Hankel J_0 and J_1 transforms**. Geophysical Prospecting, 45, 745-762.
-- Ogata, 2005. **A numerical integration formula based on the Bessel functions**. Publ. RIMS, 41, 949-970.
+- Guptasarma and Singh, 1997. **New digital linear filters for Hankel J_0 and J_1 transforms**. Geophysical Prospecting, 45, 745-762. [https://doi.org/10.1046/j.1365-2478.1997.500292.x](https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1365-2478.1997.500292.x)
+- Ogata, 2005. **A numerical integration formula based on the Bessel functions**. Publ. RIMS, 41, 949-970. [https://doi.org/10.2977/prims/1145474602](https://www.ems-ph.org/journals/show_abstract.php?issn=0034-5318&vol=41&iss=4&rank=8)
+
