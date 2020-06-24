@@ -6,8 +6,8 @@ module Bessel_Function
   !   mjyzo.f90, J-P Moreau, Paris, (http://www.jpmoreau.fr):
   !     http://jean-pierre.moreau.pagesperso-orange.fr/Fortran/mjyzo_f90.txt
   !   Properties of Bessel function:
-  !     $ Z_v^'(x) = \frac{v}{x} Z_v(x) - Z_{v+1}(x) $
-  !     $ Z_v^''(x) = (\frac{v^2}{x^2} - 1) Z_v(x) - \frac{1}{x} Z_v^'(x) $
+  !     $ Z_v'(x) = \frac{v}{x} Z_v(x) - Z_{v+1}(x) $
+  !     $ Z_v''(x) = (\frac{v^2}{x^2} - 1) Z_v(x) - \frac{1}{x} Z_v'(x) $
   !   First zero of Bessel function for large orders:
   !     equations (9.5.14-17) on page 371 of "Handbook of Mathematical
   !     Functions with Formulas, Graphs, and Mathematical Tables" (Milton
@@ -349,7 +349,7 @@ module Bessel_Function
 end module Bessel_Function
 
 !===============================================================================
-!*                       An example for use this module                        *
+!*                      An example for using this module                       *
 !===============================================================================
 !|  program main
 !|    use Bessel_Function
