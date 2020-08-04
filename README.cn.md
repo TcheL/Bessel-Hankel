@@ -12,6 +12,10 @@
 
 Tche LIU, seistche@gmail.com, USTC
 
+## 写在前面
+
+本文中包含有些许 MathJax 公式，由于 GitHub 官方不支持此类公式渲染，公式显示略显凌乱。幸于 GitHub 网友用爱发电，针对 Chrome 和 Firefox 浏览器，分别安装 [MathJax Plugin for GitHub](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima)（[GitHub 仓库](https://github.com/orsharir/github-mathjax)）和 [github-mathjax-firefox](https://github.com/traversaro/github-mathjax-firefox/releases/download/v0.2.3/github_with_mathjax-0.2.3.xpi)（[GitHub 仓库](https://github.com/traversaro/github-mathjax-firefox)）插件即可查看完美显示的公式了。
+
 ## 理论方法
 
 本仓库包含了一些 Hankel 变换的例子，牵涉到了第一类和第二类 Bessel 函数、其一阶和二阶导数及其零点的计算。下文中将给出一些与 Bessel 函数导数和零点，以及 Hankel 变换的计算有关的数学公式。
@@ -89,7 +93,7 @@ $$ F_\nu(k) = \int_0^\infty f(r) J_\nu(k r) r dr $$
 
 $$ f(r) = \int_0^\infty K(\lambda) J_i(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i $$
 
-此近似公式**仅**适用于基于一阶或二阶 Bessel 函数的 Hankel 变换。
+此近似公式**仅**适用于基于第一类零阶或一阶 Bessel 函数的 Hankel 变换。
 
 文中给出了一些可用于检验程序的标准 Hankel 变换示例：
 
@@ -122,7 +126,7 @@ $$ \begin{align*}
                                                                 & \approx \frac{1}{r^2} \left[ \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
    \end{align*} ​$$
 
-此公式适用于基于**任意**阶 Bessel 函数的 Hankel 变换。
+此公式适用于基于第一类**任意**阶 Bessel 函数的 Hankel 变换。
 
 ## 具体实现
 

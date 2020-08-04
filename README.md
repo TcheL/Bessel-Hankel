@@ -12,6 +12,10 @@
 
 Tche LIU, seistche@gmail.com, USTC
 
+## Preface
+
+The document contains some MathJax formulas that GitHub can't render properly, so that it looks slightly messy. Fortunately, for Chrome or Firefox, after installing the two add-ons [MathJax Plugin for GitHub](https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima) ([GitHub repo.](https://github.com/orsharir/github-mathjax)) or [github-mathjax-firefox](https://github.com/traversaro/github-mathjax-firefox/releases/download/v0.2.3/github_with_mathjax-0.2.3.xpi) ([GitHub repo.](https://github.com/traversaro/github-mathjax-firefox)) respectively, these formulas will be perfectly show up. And you can have a try :smirk:.
+
 ## Methodology
 
 The repository includes some examples for Hankel transform, and involves calculations of Bessel functions of the 1st kind and 2nd kind, their derivatives of the 1st order and 2nd order, and their zeros. Next, I will show you some mathematical formulas about calculations of Bessel function's derivatives and zeros, and Hankel transform.
@@ -38,14 +42,14 @@ $$ \begin{align*}
                 & = - \frac{\nu}{x^2} Z_\nu(x) + \frac{\nu}{x} \left[ \frac{\nu}{x} Z_\nu(x) - Z_{\nu + 1}(x) \right] - \left[ \frac{\nu + 1}{x} Z_{\nu + 1}(x) - \frac{2(\nu + 1)}{x} Z_{\nu + 1}(x) + Z_\nu(x) \right] \newline
                 & = \left( - \frac{\nu}{x^2} + \frac{\nu^2}{x^2} - 1 \right) Z_\nu(x) + \left( - \frac{\nu}{x} - \frac{\nu + 1}{x} + \frac{2\nu + 2}{x} \right) Z_{\nu + 1}(x) \newline
                 & = \frac{1}{x^2} \left[ (\nu^2 - \nu - x^2) Z_\nu(x) + x Z_{\nu + 1}(x) \right]
-   \end{align*} ​$$
+   \end{align*} $$
 
 and
 
 $$ \begin{align*} 
      Z_\nu''(x) & = \left( \frac{\nu^2}{x^2} - 1 \right) Z_\nu(x) - \frac{1}{x} \left[ \frac{\nu}{x} Z_\nu(x) - Z_{\nu + 1}(x) \right] \newline
                 & = \left( \frac{\nu^2}{x^2} - 1 \right) Z_\nu(x) - \frac{1}{x} Z_\nu'(x)
-   \end{align*} ​$$
+   \end{align*} $$
 
 ### Bessel function's zeros
 
@@ -56,7 +60,7 @@ According to [Wikipedia](https://en.wikipedia.org/wiki/Fixed-point_iteration#App
 $$ \begin{align*}
      x_{n + 1} & = x_n - \frac{Z_\nu(x_n)}{Z_\nu'(x_n)} \newline
                & = x_n - \frac{x_n Z_\nu(x_n)}{\nu Z_\nu(x_n) - x_n Z_{\nu + 1}(x_n)}
-   \end{align*} ​$$
+   \end{align*} $$
 
 #### Halley's method
 
@@ -73,7 +77,7 @@ According to [Wikipedia](https://en.wikipedia.org/wiki/Halley's_method#Method), 
 $$ \begin{align*}
      x_{n + 1} & = x_n - \frac{2 Z_\nu(x_n) Z_\nu'(x_n) }{ 2 [Z_\nu'(x_n)]^2 - Z_\nu(x_n) Z_\nu''(x_n) } \newline
                & = x_n - \frac{ 2 x_n Z_\nu(x_n) [ \nu Z_\nu(x_n) - x_n Z_{\nu + 1}(x_n) ] }{ 2 x_n^2 [Z_{\nu + 1}(x_n)]^2 - (4\nu + 1) x_n Z_\nu(x_n) Z_{\nu + 1}(x_n) + (\nu^2 + \nu + x_n^2) [Z_\nu(x_n)]^2}
-   \end{align*} ​$$
+   \end{align*} $$
 
 ### Hankel transform
 
@@ -89,7 +93,7 @@ The type of Hankel transform of this paper is (equations 2 and 3):
 
 $$ f(r) = \int_0^\infty K(\lambda) J_i(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i $$
 
-The formula is **only** applicable for Hankel transform based on Bessel function of order 1 and 2.
+The formula is **only** applicable for Hankel transform based on Bessel function of the first class and order 0 or 1.
 
 There are some examples of standard Hankel transform to verify our programs in this paper:
 
@@ -114,15 +118,15 @@ $$ \begin{align*}
 
 where $ x = \pi / h \cdot \psi(t) $, $ \psi(t) = t \tanh(\pi / 2 \cdot \sinh t) $ and $ t = h \xi_{\nu k} $.
 
-Set $ x = r \lambda ​$, so that $ \lambda = x/r ​$ and $ d\lambda = 1/r \cdot dx ​$, and $ x = \pi/h \cdot \psi(h \xi_{\nu k}) ​$, we can reduce:
+Set $ x = r \lambda $, so that $ \lambda = x/r $ and $ d\lambda = 1/r \cdot dx $, and $ x = \pi/h \cdot \psi(h \xi_{\nu k}) $, we can reduce:
 
 $$ \begin{align*}
      \int_0^\infty f(\lambda) J_\nu(r \lambda) \lambda d\lambda & = \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) \frac{x}{r} \cdot \frac{1}{r} dx \newline
                                                                 & = \frac{1}{r^2} \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) x dx \newline
                                                                 & \approx \frac{1}{r^2} \left[ \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
-   \end{align*} ​$$
+   \end{align*} $$
 
-The formula is applicable for Hankel transform based on Bessel function of an **arbitrary** order.
+The formula is applicable for Hankel transform based on Bessel function of the first class and an **arbitrary** order.
 
 ## Implementation
 
