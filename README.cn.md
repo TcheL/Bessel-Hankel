@@ -18,11 +18,11 @@ Tche LIU, seistche@gmail.com, USTC
 
 ## 理论方法
 
-本仓库包含了一些 Hankel 变换的例子，牵涉到了第一类和第二类 Bessel 函数、其一阶和二阶导数及其零点的计算。下文中将给出一些与 Bessel 函数导数和零点，以及 Hankel 变换的计算有关的数学公式。
+本仓库包含了一些 Hankel 变换的例子，牵涉到了第一类和第二类 Bessel 函数、其一阶和二阶导数及其零点的计算。下文中将给出一些与 Bessel 函数导数和零点、以及 Hankel 变换的计算有关的数学公式。
 
 ### Bessel 函数的导数
 
-下文中以 $Z_\nu(x)$ 表示 $J_\nu(x)$ 或 $Y_\nu(x)$ by $Z_\nu(x)$，根据 Bessel 函数的递推关系：
+下文中以 $Z_\nu(x)$ 表示 $J_\nu(x)$ 或 $Y_\nu(x)$，根据 Bessel 函数的递推关系：
 
 $$ x Z_{\nu - 1}(x) + x Z_{\nu + 1}(x) = 2\nu Z_\nu(x) $$
 
@@ -42,14 +42,14 @@ $$ \begin{align*}
                 & = - \frac{\nu}{x^2} Z_\nu(x) + \frac{\nu}{x} \left[ \frac{\nu}{x} Z_\nu(x) - Z_{\nu + 1}(x) \right] - \left[ \frac{\nu + 1}{x} Z_{\nu + 1}(x) - \frac{2(\nu + 1)}{x} Z_{\nu + 1}(x) + Z_\nu(x) \right] \newline
                 & = \left( - \frac{\nu}{x^2} + \frac{\nu^2}{x^2} - 1 \right) Z_\nu(x) + \left( - \frac{\nu}{x} - \frac{\nu + 1}{x} + \frac{2\nu + 2}{x} \right) Z_{\nu + 1}(x) \newline
                 & = \frac{1}{x^2} \left[ (\nu^2 - \nu - x^2) Z_\nu(x) + x Z_{\nu + 1}(x) \right]
-   \end{align*} ​$$
+   \end{align*} $$
 
 和
 
 $$ \begin{align*} 
      Z_\nu''(x) & = \left( \frac{\nu^2}{x^2} - 1 \right) Z_\nu(x) - \frac{1}{x} \left[ \frac{\nu}{x} Z_\nu(x) - Z_{\nu + 1}(x) \right] \newline
                 & = \left( \frac{\nu^2}{x^2} - 1 \right) Z_\nu(x) - \frac{1}{x} Z_\nu'(x)
-   \end{align*} ​$$
+   \end{align*} $$
 
 ### Bessel 函数的零点
 
@@ -60,7 +60,7 @@ $$ \begin{align*}
 $$ \begin{align*}
      x_{n + 1} & = x_n - \frac{Z_\nu(x_n)}{Z_\nu'(x_n)} \newline
                & = x_n - \frac{x_n Z_\nu(x_n)}{\nu Z_\nu(x_n) - x_n Z_{\nu + 1}(x_n)}
-   \end{align*} ​$$
+   \end{align*} $$
 
 #### Halley 方法
 
@@ -77,7 +77,7 @@ $$ Z_\nu(x) Z_\nu''(x) = \frac{1}{x^2} \left\lbrace (\nu^2 - \nu - x^2) [Z_\nu(x
 $$ \begin{align*}
      x_{n + 1} & = x_n - \frac{2 Z_\nu(x_n) Z_\nu'(x_n) }{ 2 [Z_\nu'(x_n)]^2 - Z_\nu(x_n) Z_\nu''(x_n) } \newline
                & = x_n - \frac{ 2 x_n Z_\nu(x_n) [ \nu Z_\nu(x_n) - x_n Z_{\nu + 1}(x_n) ] }{ 2 x_n^2 [Z_{\nu + 1}(x_n)]^2 - (4\nu + 1) x_n Z_\nu(x_n) Z_{\nu + 1}(x_n) + (\nu^2 + \nu + x_n^2) [Z_\nu(x_n)]^2}
-   \end{align*} ​$$
+   \end{align*} $$
 
 ### Hankel 变换
 
@@ -118,13 +118,13 @@ $$ \begin{align*}
 
 其中 $ x = \pi / h \cdot \psi(t) $，$ \psi(t) = t \tanh(\pi / 2 \cdot \sinh t) $ 且 $ t = h \xi_{\nu k} $.
 
-设 $ x = r \lambda ​$，则 $ \lambda = x/r ​$ 且 $ d\lambda = 1/r \cdot dx ​$，又有 $ x = \pi/h \cdot \psi(h \xi_{\nu k}) ​$，可得：
+设 $ x = r \lambda $，则 $ \lambda = x/r $ 且 $ d\lambda = 1/r \cdot dx $，又有 $ x = \pi/h \cdot \psi(h \xi_{\nu k}) $，可得：
 
 $$ \begin{align*}
      \int_0^\infty f(\lambda) J_\nu(r \lambda) \lambda d\lambda & = \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) \frac{x}{r} \cdot \frac{1}{r} dx \newline
                                                                 & = \frac{1}{r^2} \int_0^\infty f \left( \frac{x}{r} \right) J_\nu(x) x dx \newline
                                                                 & \approx \frac{1}{r^2} \left[ \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
-   \end{align*} ​$$
+   \end{align*} $$
 
 此公式适用于基于第一类**任意**阶 Bessel 函数的 Hankel 变换。
 
@@ -140,7 +140,7 @@ $$ \begin{align*}
 
 由于本源文件不包含主程序，例如，可通过命令 `$ gfortran -DHALLEY -c Bessel_Function.F90` 来编译此程序，但无法运行之。
 
-此外， [Bessel Zero Solver](https://ww2.mathworks.cn/matlabcentral/fileexchange/48403-bessel-zero-solver) 是一个有效可靠的用于基于 Halley 方法求解第一类和第二类 Bessel 函数零点的 `matlab` 函数。
+此外， [Bessel Zero Solver](https://ww2.mathworks.cn/matlabcentral/fileexchange/48403-bessel-zero-solver) 是一个有效且可靠的用于基于 Halley 方法求解第一类和第二类 Bessel 函数零点的 `matlab` 函数。
 
 ### Guptasarma_1997
 
