@@ -91,7 +91,7 @@ $$ F_\nu(k) = \int_0^\infty f(r) J_\nu(k r) r dr $$
 
 The type of Hankel transform of this paper is (equations 2 and 3):
 
-$$ f(r) = \int_0^\infty K(\lambda) J_i(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i $$
+$$ f(r) = \int_0^\infty K(\lambda) J_\nu(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i^\nu $$
 
 The formula is **only** applicable for Hankel transform based on Bessel function of the first class and order 0 or 1.
 

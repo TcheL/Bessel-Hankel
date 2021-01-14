@@ -91,7 +91,7 @@ $$ F_\nu(k) = \int_0^\infty f(r) J_\nu(k r) r dr $$
 
 文中的 Hankel 变换类型为（式 2 和 3）：
 
-$$ f(r) = \int_0^\infty K(\lambda) J_i(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i $$
+$$ f(r) = \int_0^\infty K(\lambda) J_\nu(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i^\nu $$
 
 此近似公式**仅**适用于基于第一类零阶或一阶 Bessel 函数的 Hankel 变换。
 
