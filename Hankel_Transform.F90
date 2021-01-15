@@ -42,7 +42,7 @@ module Hankel_Transform
         & ]
 
       do i = 1, n, 1
-        lambda = 10.0_myKind**(a + (i - 1)*s)/r
+        lambda = 10.0d0**(a + (i - 1)*s)/r
         K(i) = extFunc("lambda", lambda)
       end do
       f = dot_product(K, W)/r
@@ -89,7 +89,7 @@ module Hankel_Transform
 & -2.40057837293d-05,  6.23096824846d-06, -1.12363896552d-06,  1.04470606055d-07  &
         & ]
       do i = 1, n, 1
-        lambda = 10.0_myKind**(a + (i - 1)*s)/r
+        lambda = 10.0d0**(a + (i - 1)*s)/r
         K(i) = extFunc("lambda", lambda)
       end do
       f = dot_product(K, W)/r
@@ -118,7 +118,7 @@ module Hankel_Transform
 &  2.21277518118d-04, -5.66248732755d-05,  7.88229202853d-06                      &
         & ]
       do i = 1, n, 1
-        lambda = 10.0_myKind**(a + (i - 1)*s)/r
+        lambda = 10.0d0**(a + (i - 1)*s)/r
         K(i) = extFunc("lambda", lambda)
       end do
       f = dot_product(K, W)/r
@@ -170,7 +170,7 @@ module Hankel_Transform
 &  3.53667004588d-09, -1.36030600198d-09,  3.52544249042d-10, -4.53719284366d-11  &
         & ]
       do i = 1, n, 1
-        lambda = 10.0_myKind**(a + (i - 1)*s)/r
+        lambda = 10.0d0**(a + (i - 1)*s)/r
         K(i) = extFunc("lambda", lambda)
       end do
       f = dot_product(K, W)/r
