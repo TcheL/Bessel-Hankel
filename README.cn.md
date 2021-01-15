@@ -130,6 +130,16 @@ $$ \begin{align*}
 
 ## 具体实现
 
+### example_Functions
+
+[example_Functions](example_Functions.F90) 是一个包含了 (Guptasarma and Singh, 1997) 文中 Hankel 变换的全部例子的 `fortran` 模块。
+
+### Hankel_Transform
+
+[Hankel_Transform](Hankel_Transform.F90) 是一个基于 (Guptasarma and Singh, 1997) 文中方法实现 Hankel 变换的 `fortran` 模块。
+
+由于本源文件中不包含主程序，例如，可通过命令 `$ gfortran -c Hankel_Transform.F90` 来编译此程序，但无法运行之。
+
 ### Bessel_Function
 
 [Bessel_Function](Bessel_Function.F90) 是一个用于计算第一类和第二类 Bessel 函数、其一阶和二阶导数及其原函数和一阶导数的零点的 `fortran` 模块。该模块主要由 [mjyzo.f90](http://jean-pierre.moreau.pagesperso-orange.fr/Fortran/mjyzo_f90.txt) 修改而来。
@@ -144,17 +154,17 @@ $$ \begin{align*}
 
 ### Guptasarma_1997
 
-[Guptasarma_1997](Guptasarma_1997.F90) 是一个独立的程序，它实现了 (Guptasarma and Singh, 1997) 的方法论，包含了该文中的所有例子。
+[Guptasarma_1997](Guptasarma_1997.F90) 是一个基于 [Hankel_Transform 模块](Hankel_Transform.F90)的主程序，它实现了 (Guptasarma and Singh, 1997) 的方法论，并通过调用 [example_Functions 模块](example_Functions.F90)包含了该文中的所有例子。
 
 在本源文件中有一个预处理宏：**FAST** 用于采用更少的采样点来更快速地完成 Hankel 变换；如未定义，则采用更多的采样点来更准确地完成。
 
-例如，可通过命令 `$ gfortran -DFAST Guptasarma_1997.F90 -o Guptasarma` 来编译此源文件，且以命令 `$ ./Guptasarma` 运行之。
+例如，可通过命令 `$ gfortran -DFAST example_Functions.F90 Hankel_Transform.F90 Guptasarma_1997.F90 -o Guptasarma` 来编译此源文件，且以命令 `$ ./Guptasarma` 运行之。
 
 ### Ogata_2005
 
-[Ogata_2005](Ogata_2005.F90) 是一个基于 [Bessel_Function 模块](Bessel_Function.F90)的程序，它将 (Ogata, 2005) 的方法论应用到了 Hankel 变换上。
+[Ogata_2005](Ogata_2005.F90) 是一个基于 [Bessel_Function 模块](Bessel_Function.F90)的主程序，它将 (Ogata, 2005) 的方法论应用到了 Hankel 变换上，并通过调用 [example_Functions 模块](example_Functions.F90)包含了 (Guptasarma and Singh, 1997) 中的所有例子。
 
-例如，可通过命令 `$ gfortran -DHALLEY Bessel_Function.F90 Ogata_2005.F90 -o Ogata` 来完成此程序的编译，并以命令 `$ ./Ogata` 运行之。
+例如，可通过命令 `$ gfortran -DHALLEY example_Functions.F90 Bessel_Function.F90 Ogata_2005.F90 -o Ogata` 来完成此程序的编译，并以命令 `$ ./Ogata` 运行之。
 
 ## 参考文献
 

@@ -1,5 +1,3 @@
-#define KV 8
-
 module Bessel_Function
 
   ! Reference:
@@ -20,6 +18,7 @@ module Bessel_Function
   implicit none
   public
 
+  integer, parameter, private :: KV = kind(1.0d0)
   real(kind = KV), parameter :: eps = 1.0d-9
 
   contains
@@ -355,6 +354,7 @@ end module Bessel_Function
 !|    use Bessel_Function
 !|    implicit none
 !|  
+!|    integer, parameter :: KV = kind(1.0d0)
 !|    integer, parameter :: nu = 1, n = 10
 !|    real(kind = KV) :: J0(n), J1(n), Y0(n), Y1(n)
 !|    integer :: i

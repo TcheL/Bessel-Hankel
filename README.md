@@ -1,6 +1,6 @@
 # Bessel-Hankel
 
-**Bessel function** and **Hankel transform**
+**Bessel function** and **Hankel transformation**
 
 [中文版](README.cn.md)
 
@@ -18,7 +18,7 @@ The document contains some MathJax formulas that GitHub can't render properly, s
 
 ## Methodology
 
-The repository includes some examples for Hankel transform, and involves calculations of Bessel functions of the 1st kind and 2nd kind, their derivatives of the 1st order and 2nd order, and their zeros. Next, I will show you some mathematical formulas about calculations of Bessel function's derivatives and zeros, and Hankel transform.
+The repository includes some examples for the Hankel transformation, and involves calculations of Bessel functions of the 1st kind and 2nd kind, their derivatives of the 1st order and 2nd order, and their zeros. Next, I will show you some mathematical formulas about calculations of Bessel function's derivatives and zeros, and the Hankel transformation.
 
 ### Bessel function's derivatives
 
@@ -79,23 +79,23 @@ $$ \begin{align*}
                & = x_n - \frac{ 2 x_n Z_\nu(x_n) [ \nu Z_\nu(x_n) - x_n Z_{\nu + 1}(x_n) ] }{ 2 x_n^2 [Z_{\nu + 1}(x_n)]^2 - (4\nu + 1) x_n Z_\nu(x_n) Z_{\nu + 1}(x_n) + (\nu^2 + \nu + x_n^2) [Z_\nu(x_n)]^2}
    \end{align*} $$
 
-### Hankel transform
+### Hankel transformation
 
 #### Definition
 
-According to [Wikipedia](https://en.wikipedia.org/wiki/Hankel_transform#Definition), the Hankel transform of order $\nu$ of a function $f(r)$ is given by:
+According to [Wikipedia](https://en.wikipedia.org/wiki/Hankel_transform#Definition), the Hankel transformation of order $\nu$ of a function $f(r)$ is given by:
 
 $$ F_\nu(k) = \int_0^\infty f(r) J_\nu(k r) r dr $$
 
 #### (Guptasarma and Singh, 1997)
 
-The type of Hankel transform of this paper is (equations 2 and 3):
+The type of the Hankel transformation of this paper is (equations 2 and 3):
 
 $$ f(r) = \int_0^\infty K(\lambda) J_\nu(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i^\nu $$
 
-The formula is **only** applicable for Hankel transform based on Bessel function of the first class and order 0 or 1.
+The formula is **only** applicable for the Hankel transformation based on Bessel function of the first class and order 0 or 1.
 
-There are some examples of standard Hankel transform to verify our programs in this paper:
+There are some examples of standard Hankel transformation to verify our programs in this paper:
 
 |                         $K(\lambda)$                         | $J_\nu$ |                            $f(r)$                            |
 | :----------------------------------------------------------: | :-----: | :----------------------------------------------------------: |
@@ -126,11 +126,21 @@ $$ \begin{align*}
                                                                 & \approx \frac{1}{r^2} \left[ \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{x}{r} \right) J_\nu(x) \psi'(h \xi_{\nu k}) \right] x
    \end{align*} $$
 
-The formula is applicable for Hankel transform based on Bessel function of the first class and an **arbitrary** order.
+The formula is applicable for the Hankel transformation based on Bessel function of the first class and an **arbitrary** order.
 
 ## Implementation
 
-### Bessel_Function
+### example_Functions
+
+[example_Functions](example_Functions.F90) is a `fortran` module including all examples in (Guptasarma and Singh, 1997) for the Hankel transformation.
+
+### Hankel_Transform
+
+[Hankel_Transform](Hankel_Transform.F90) is a `fortran` module to implement the Hankel transformation based on (Guptasarma and Singh, 1997).
+
+Because the source file has no main program, as an example, you can compile it by `$ gfortran -c Hankel_Transform.F90`, but CAN'T run it.
+
+### Bessel_Functions
 
 [Bessel_Function](Bessel_Function.F90) is a `fortran` module for calculations of Bessel functions of the 1st and 2nd kind, their derivative of the 1st and 2nd order, and zeros of original functions and derivations of the 1st order. The module is mainly modified from [mjyzo.f90](http://jean-pierre.moreau.pagesperso-orange.fr/Fortran/mjyzo_f90.txt).
 
@@ -144,17 +154,17 @@ Besides, [Bessel Zero Solver](https://ww2.mathworks.cn/matlabcentral/fileexchang
 
 ### Guptasarma_1997
 
-[Guptasarma_1997](Guptasarma_1997.F90) is a independent program to implement the methodology of (Guptasarma and Singh, 1997), and includes all examples in this paper.
+[Guptasarma_1997](Guptasarma_1997.F90) is a program based on [the Hankel_Transform module](Hankel_Transform.F90) to implement the methodology of (Guptasarma and Singh, 1997), and includes all examples in this paper by invoking [the example_Functions module](example_Functions.F90).
 
-There is a macro for preprocessing in this source file: **FAST** for using less sample points to faster finish the Hankel transform; and if not defined, using more sample points to more exactly finish.
+There is a macro for preprocessing in this source file: **FAST** for using less sample points to faster finish the Hankel transformation; and if not defined, using more sample points to more exactly finish.
 
-For example, you can compile the source file by `$ gfortran -DFAST Guptasarma_1997.F90 -o Guptasarma`, and run the program by `$ ./Guptasarma`.
+For example, you can compile the source file by `$ gfortran -DFAST example_Functions.F90 Hankel_Transform.F90 Guptasarma_1997.F90 -o Guptasarma`, and run the program by `$ ./Guptasarma`.
 
 ### Ogata_2005
 
-[Ogata_2005](Ogata_2005.F90) is a program based on [the Bessel_Function module](Bessel_Function.F90) to apply the methodology of (Ogata, 2005) to Hankel transform.
+[Ogata_2005](Ogata_2005.F90) is a program based on [the Bessel_Function module](Bessel_Function.F90) to apply the methodology of (Ogata, 2005) to Hankel transform, and includes all examples in (Guptasarma and Singh, 1997) by invoking [the example_Functions module](example_Functions.F90).
 
-For example, you can compile the source file by `$ gfortran -DHALLEY Bessel_Function.F90 Ogata_2005.F90 -o Ogata`, and run the program by `$ ./Ogata`.
+For example, you can compile the source file by `$ gfortran -DHALLEY example_Functions.F90 Bessel_Function.F90 Ogata_2005.F90 -o Ogata`, and run the program by `$ ./Ogata`.
 
 ## References
 
