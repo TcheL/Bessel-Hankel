@@ -1,0 +1,21 @@
+! NOTE:
+!-------------------------------------------------------------------------------
+!   There are some parameters for the program, and you can change any value or
+!   text behind '=' or '!' character in any line of this file, but please DON'T
+!   change anything else.
+
+&input
+
+! which example to be verified: [4-10]
+iExample = 4
+
+! the sampling number of independent variable $ r $:
+nSample = 500
+
+! sampling interval of independent variable ($ \log_{10} r $):
+rlogMin = -8.0
+rlogMax = 4.0
+
+/
+
+! vim:ft=fortran tw=80 ts=4 sw=2 et ai

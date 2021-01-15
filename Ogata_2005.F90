@@ -12,21 +12,27 @@ program main
   ! Hankel transform, https://en.wikipedia.org/wiki/Hankel_transform#Definition
   !   $ F(r) = \int_0^\infty f(\lambda) J_\nu(r \lambda) \lambda d\lambda $
 
-  integer, parameter :: nRoots = 500, nSample = 400
-  real(kind = myKind), parameter :: pi = 3.141592653589793_myKind, &
-    & steph = 1.0d-5, delta = 1.0d-3
+  integer, parameter :: nRoots = 1000
+  real(kind = myKind), parameter :: pi = 3.141592653589793d0
+  real(kind = myKind), parameter :: steph = 1.0d-7
+
+  integer :: iExample, nSample, nu
+  real(kind = myKind) :: rlogMin, rlogMax, rlogStep
   real(kind = myKind) :: t(nRoots), x(nRoots), xi(nRoots), &
     & psi(nRoots), psi_d(nRoots), omega(nRoots)
 
-  integer :: iExample, i, j, nu = 0
-  real(kind = myKind) :: r, numRes, anaRes, relatError
+  integer :: fileID, i, j
+  real(kind = myKind) :: r, numRes, anaRes, relErr
   character(len = :), allocatable :: fmtStr
 
   procedure(real(kind = myKind)), pointer :: pFunc2exampleFunction => null()
+  namelist /input/ iExample, nSample, rlogMin, rlogMax
 
   ! ===== to prepare =====
-  write(*, "(A)", advance = "NO") "> which example you want to check (4-10)? "
-  read(*, *) iExample
+  open(newunit = fileID, file = 'input.nml', status = 'old')
+    read(fileID, nml = input)
+  close(fileID)
+  rlogStep = (rlogMax - rlogMin)/(nSample - 1)
 
   select case(iExample)
     case(4)
@@ -55,9 +61,9 @@ program main
   end select
 
   if(myKind == kind(1.0e0)) then
-    fmtStr = "(I5, 1P, 1X, E14.7, 1X, E14.7, 1X, 0P, F9.2, A)"
+    fmtStr = "(1P, E14.7, 1X, E14.7, 1X, E14.7, 1X, 0P, F9.2, A)"
   else
-    fmtStr = "(I5, 1P, 1X, E23.16, 1X, E23.16, 1X, 0P, F9.2, A)"
+    fmtStr = "(1P, E23.16, 1X, E23.16, 1X, E23.16, 1X, 0P, F9.2, A)"
   end if
 
   ! ===== to calculate =====
@@ -66,26 +72,26 @@ program main
   t = steph*xi
 
   ! equation (5.1) in (Ogata, 2005)
-  psi = t*tanh(pi/2.0_myKind*sinh(t))
+  psi = t*tanh(pi/2.0d0*sinh(t))
   x = pi/steph*psi
 
-  psi_d = cosh(pi/2.0_myKind*sinh(t))
-  psi_d = tanh(pi/2.0_myKind*sinh(t)) + t*(pi/2.0_myKind*cosh(t)/(psi_d*psi_d))
+  psi_d = cosh(pi/2.0d0*sinh(t))
+  psi_d = tanh(pi/2.0d0*sinh(t)) + t*(pi/2.0d0*cosh(t)/(psi_d*psi_d))
 
   omega = bessel_yn(nu, pi*xi)/bessel_jn(nu + 1, pi*xi)
 
   do i = 1, nSample, 1
-    r = i*delta
-    numRes = 0.0_myKind
+    r = 10**(rlogMin + rlogStep*(i - 1))
+    numRes = 0.0d0
     do j = 1, nRoots, 1
       ! modified equation (5.2) in (Ogata, 2005)
-      numRes = numRes + 1.0_myKind/(r*r)*( pi*omega(j) &
+      numRes = numRes + 1.0d0/(r*r)*( pi*omega(j) &
         & *funcKernel(pFunc2exampleFunction, "lambda", x(j)/r) &
         & *bessel_jn(nu, x(j))*psi_d(j) )*x(j)
     end do
     anaRes = funcKernel(pFunc2exampleFunction, 'r', r)
-    relatError = (numRes - anaRes)/anaRes*100.0_myKind
-    write(*, fmtStr) i, numRes, anaRes, relatError, '%'
+    relErr = (numRes - anaRes)/anaRes*100.0d0
+    write(*, fmtStr) r, numRes, anaRes, relErr, '%'
   end do
 
   contains

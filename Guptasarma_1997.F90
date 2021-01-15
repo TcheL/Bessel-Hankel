@@ -8,19 +8,21 @@ program main
   use Hankel_Transform
   implicit none
 
-  integer, parameter :: nSample = 400
-  integer :: iExample, i
-  real(kind = myKind) :: delta, r
-  real(kind = myKind) :: numerSolution(nSample), analySolution(nSample), &
-    & relatError(nSample)
+  integer :: iExample, nSample
+  real(kind = myKind) :: rlogMin, rlogMax, rlogStep
+
+  integer :: fileID, i
+  real(kind = myKind) :: r, numRes, anaRes, relErr
   character(len = :), allocatable :: fmtStr
 
   procedure(real(kind = myKind)), pointer :: pFunc2HankelTransform => null()
   procedure(real(kind = myKind)), pointer :: pFunc2exampleFunction => null()
+  namelist /input/ iExample, nSample, rlogMin, rlogMax
 
-  delta = 1.0d-03 ! 1.0d+00
-  write(*, "(A)", advance = "NO") "> which example you want to check (4-10)? "
-  read(*, *) iExample
+  open(newunit = fileID, file = 'input.nml', status = 'old')
+    read(fileID, nml = input)
+  close(fileID)
+  rlogStep = (rlogMax - rlogMin)/(nSample - 1)
 
   select case(iExample)
     case(4)
@@ -55,24 +57,18 @@ program main
 #endif
   end select
 
-  do i = 1, nSample, 1
-    r = i*delta
-    numerSolution(i) = pFunc2HankelTransform(pFunc2exampleFunction, r)
-    analySolution(i) = pFunc2exampleFunction('r', r)
-  end do
-        
-  relatError = (numerSolution - analySolution)/analySolution*100.0_myKind
-! relatError = (analySolution - numerSolution)/numerSolution*100.0_myKind
-
-
   if(myKind == kind(1.0e0)) then
-    fmtStr = "(I5, 1P, 1X, E14.7, 1X, E14.7, 1X, 0P, F9.2, A)"
+    fmtStr = "(1P, E14.7, 1X, E14.7, 1X, E14.7, 1X, 0P, F9.2, A)"
   else
-    fmtStr = "(I5, 1P, 1X, E23.16, 1X, E23.16, 1X, 0P, F9.2, A)"
+    fmtStr = "(1P, E23.16, 1X, E23.16, 1X, E23.16, 1X, 0P, F9.2, A)"
   end if
 
-  do i = 1, 400, 1
-    write(*, fmtStr) i, numerSolution(i), analySolution(i), relatError(i), '%'
+  do i = 1, nSample, 1
+    r = 10**(rlogMin + rlogStep*(i - 1))
+    numRes = pFunc2HankelTransform(pFunc2exampleFunction, r)
+    anaRes = pFunc2exampleFunction('r', r)
+    relErr = (numRes - anaRes)/anaRes*100.0d0
+    write(*, fmtStr) r, numRes, anaRes, relErr, '%'
   end do
 
 end program

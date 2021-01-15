@@ -10,7 +10,7 @@ module example_Functions
   public
 
   integer, parameter :: myKind = kind(1.0d0)
-  real(kind = myKind), private :: c = 1.0_myKind, alpha = 1.0_myKind
+  real(kind = myKind), private :: c = 1.0d0, alpha = 1.0d0
 
   contains
 
@@ -21,9 +21,9 @@ module example_Functions
       if(varName == "lambda") then
         func = exp( - c*var)
       else if(varName == 'r') then
-        func = 1.0_myKind/sqrt(c*c + var*var)
+        func = 1.0d0/sqrt(c*c + var*var)
       else
-        func = 0.0_myKind
+        func = 0.0d0
       end if
     end function exampleFunc1
 
@@ -34,9 +34,9 @@ module example_Functions
       if(varName == "lambda") then
         func = var*exp( - c*var*var)
       else if(varName == 'r') then
-        func = 1.0_myKind/(2*c)*exp( - var*var/(4*c))
+        func = 1.0d0/(2.0d0*c)*exp( - var*var/(4.0d0*c))
       else
-        func = 0.0_myKind
+        func = 0.0d0
       end if
     end function exampleFunc2
 
@@ -49,7 +49,7 @@ module example_Functions
       else if(varName == 'r') then
         func = c/sqrt((c*c + var*var)**3)
       else
-        func = 0.0_myKind
+        func = 0.0d0
       end if
     end function exampleFunc3
 
@@ -58,12 +58,12 @@ module example_Functions
       character(len = *), intent(in) :: varName
       real(kind = myKind), intent(in) :: var
       if(varName == "lambda") then
-        func = var*exp( - c*var) &
-           & + alpha*var*var*exp( - c*var*var)
+        func = var*exp( - c*var) + alpha*var*var*exp( - c*var*var)
       else if(varName == 'r') then
-        func = var/sqrt((c*c + var*var)**3) + alpha*var*exp( - var*var/(4*c))/(4*c*c)
+        func = var/sqrt((c*c + var*var)**3) &
+          & + alpha*var*exp( - var*var/(4.0d0*c))/(4.0d0*c*c)
       else
-        func = 0.0_myKind
+        func = 0.0d0
       end if
     end function exampleFunc4
 
@@ -76,7 +76,7 @@ module example_Functions
       else if(varName == 'r') then
         func = var/sqrt((c*c + var*var)**3)
       else
-        func = 0.0_myKind
+        func = 0.0d0
       end if
     end function exampleFunc5
 
@@ -87,9 +87,9 @@ module example_Functions
       if(varName == "lambda") then
         func = var*var*exp( - c*var*var)
       else if(varName == 'r') then
-        func = var*exp( - var*var/(4*c))/(4*c*c)
+        func = var*exp( - var*var/(4.0d0*c))/(4.0d0*c*c)
       else
-        func = 0.0_myKind
+        func = 0.0d0
       end if
     end function exampleFunc6
 
@@ -102,7 +102,7 @@ module example_Functions
       else if(varName == 'r') then
         func = (sqrt(var*var + c*c) - c)/(var*sqrt(var*var + c*c))
       else
-        func = 0.0_myKind
+        func = 0.0d0
       end if
     end function exampleFunc7
 
