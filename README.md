@@ -166,6 +166,12 @@ For example, you can compile the source file by `$ gfortran -DFAST example_Funct
 
 For example, you can compile the source file by `$ gfortran -DHALLEY example_Functions.F90 Bessel_Function.F90 Ogata_2005.F90 -o Ogata`, and run the program by `$ ./Ogata`.
 
+## Examples
+
+<img src="figures/example-5.png" alt="Example 5" style="zoom:67%;" />
+
+<img src="figures/example-7.png" alt="Example 7" style="zoom: 67%;" />
+
 ## References
 
 - Guptasarma and Singh, 1997. **New digital linear filters for Hankel J_0 and J_1 transforms**. Geophysical Prospecting, 45, 745-762. [https://doi.org/10.1046/j.1365-2478.1997.500292.x](https://onlinelibrary.wiley.com/doi/abs/10.1046/j.1365-2478.1997.500292.x)

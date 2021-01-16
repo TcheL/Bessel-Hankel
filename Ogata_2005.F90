@@ -61,9 +61,9 @@ program main
   end select
 
   if(myKind == kind(1.0e0)) then
-    fmtStr = "(1P, E14.7, 1X, E14.7, 1X, E14.7, 1X, 0P, F9.2, A)"
+    fmtStr = "(1P, 3(E16.7E3, 1X), 0P, F9.2, A)"
   else
-    fmtStr = "(1P, E23.16, 1X, E23.16, 1X, E23.16, 1X, 0P, F9.2, A)"
+    fmtStr = "(1P, 3(E25.16E3, 1X), 0P, F9.2, A)"
   end if
 
   ! ===== to calculate =====
