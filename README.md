@@ -97,15 +97,15 @@ The formula is **only** applicable for the Hankel transformation based on Bessel
 
 There are some examples of standard Hankel transformation to verify our programs in this paper:
 
-|                         $K(\lambda)$                         | $J_\nu$ |                            $f(r)$                            |
-| :----------------------------------------------------------: | :-----: | :----------------------------------------------------------: |
-|                      $e^{ - c \lambda}$                      |  $J_0$  |                 $\frac{1}{\sqrt{c^2 + r^2}}$                 |
-|                 $\lambda e^{ - c \lambda^2}$                 |  $J_0$  |                $\frac{1}{2c} e^{ - r^2/(4c)}$                |
-|                  $\lambda e^{ - c \lambda}$                  |  $J_0$  |               $\frac{c}{\sqrt{(c^2 + r^2)^3}}$               |
-| $\lambda e^{ - c \lambda} + \alpha \lambda^2 e^{ - c \lambda^2}$ |  $J_1$  | $\frac{r}{\sqrt{(c^2 + r^2)^3}} + \alpha \frac{r e^{ - r^2/(4c)}}{4 c^2}$ |
-|                  $\lambda e^{ - c \lambda}$                  |  $J_1$  |               $\frac{r}{\sqrt{(c^2 + r^2)^3}}$               |
-|                $\lambda^2 e^{ - c \lambda^2}$                |  $J_1$  |              $\frac{r e^{ - r^2/(4c)}}{4 c^2}$               |
-|                      $e^{ - c \lambda}$                      |  $J_1$  |      $\frac{\sqrt{c^2 + r^2} - c}{r \sqrt{c^2 + r^2}}$       |
+| The equation number |                         $K(\lambda)$                         | $J_\nu$ |                            $f(r)$                            |
+| :-----------------: | :----------------------------------------------------------: | :-----: | :----------------------------------------------------------: |
+|          4          |                      $e^{ - c \lambda}$                      |  $J_0$  |                 $\frac{1}{\sqrt{c^2 + r^2}}$                 |
+|          5          |                 $\lambda e^{ - c \lambda^2}$                 |  $J_0$  |                $\frac{1}{2c} e^{ - r^2/(4c)}$                |
+|          6          |                  $\lambda e^{ - c \lambda}$                  |  $J_0$  |               $\frac{c}{\sqrt{(c^2 + r^2)^3}}$               |
+|          7          | $\lambda e^{ - c \lambda} + \alpha \lambda^2 e^{ - c \lambda^2}$ |  $J_1$  | $\frac{r}{\sqrt{(c^2 + r^2)^3}} + \alpha \frac{r e^{ - r^2/(4c)}}{4 c^2}$ |
+|          8          |                  $\lambda e^{ - c \lambda}$                  |  $J_1$  |               $\frac{r}{\sqrt{(c^2 + r^2)^3}}$               |
+|          9          |                $\lambda^2 e^{ - c \lambda^2}$                |  $J_1$  |              $\frac{r e^{ - r^2/(4c)}}{4 c^2}$               |
+|         10          |                      $e^{ - c \lambda}$                      |  $J_1$  |      $\frac{\sqrt{c^2 + r^2} - c}{r \sqrt{c^2 + r^2}}$       |
 
 #### (Ogata, 2005)
 
