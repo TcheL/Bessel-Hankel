@@ -93,6 +93,8 @@ $$ F_\nu(k) = \int_0^\infty f(r) J_\nu(k r) r dr $$
 
 $$ f(r) = \int_0^\infty K(\lambda) J_\nu(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i^\nu $$
 
+其中 $ \lambda_i = (1/r) \cdot 10^{ a + (i - 1) s } $。此外，相移因子 $ a $、采样间距 $ s $ 和 $ n $ 阶滤波权重 $ W_i^{\nu} $ 的值在论文中给出。
+
 此近似公式**仅**适用于基于第一类零阶或一阶 Bessel 函数的 Hankel 变换。
 
 文中给出了一些可用于检验程序的标准 Hankel 变换示例：
@@ -116,7 +118,9 @@ $$ \begin{align*}
                                  & = \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) J_\nu \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) \psi'(h \xi_{\nu k}) \newline
 \end{align*}$$
 
-其中 $ x = \pi / h \cdot \psi(t) $，$ \psi(t) = t \tanh(\pi / 2 \cdot \sinh t) $ 且 $ t = h \xi_{\nu k} $.
+其中 $ \omega_{\nu k} = Y_{\nu}(\pi \xi_{\nu |k|}) / J_{\nu + 1} (\pi \xi_{\nu |k|}) $, $ x = \pi / h \cdot \psi(t) $，$ \psi(t) = t \tanh(\pi / 2 \cdot \sinh t) $ 和 $ t = h \xi_{\nu k} $。$ h $ 是一个小的正常数 ，$ \nu $ 为大于 $ -1 $ 的实常数，$ \xi_{\nu k} $ 是 $ J_{\nu} (\pi x) $ 的按如下方式排列的第 $ |k| $ 个零点（从原点算起）：
+
+$$ \cdots < \xi_{\nu, -2} < \xi_{\nu, -1} < 0 < \xi_{\nu, 1} < \xi_{\nu, 2} < \cdots; \xi_{\nu, -k} = - \xi_{\nu, k} $$
 
 设 $ x = r \lambda $，则 $ \lambda = x/r $ 且 $ d\lambda = 1/r \cdot dx $，又有 $ x = \pi/h \cdot \psi(h \xi_{\nu k}) $，可得：
 

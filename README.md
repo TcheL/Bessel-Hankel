@@ -93,6 +93,8 @@ The type of the Hankel transformation of this paper is (equations 2 and 3):
 
 $$ f(r) = \int_0^\infty K(\lambda) J_\nu(r \lambda) d\lambda \approx \frac{1}{r} \sum_{i = 1}^n K(\lambda_i) W_i^\nu $$
 
+where $ \lambda_i = (1/r) \cdot 10^{a + (i - 1) s} $. Besides, values of the shift factor $ a $, the sampling spacing $ s $ and the $ n $-order filter weights $ W_i^{\nu} $ are given in the paper.
+
 The formula is **only** applicable for the Hankel transformation based on Bessel function of the first class and order 0 or 1.
 
 There are some examples of standard Hankel transformation to verify our programs in this paper:
@@ -116,7 +118,9 @@ $$ \begin{align*}
                                  & = \pi \sum_{k = 1}^{\infty} \omega_{\nu k} f \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) J_\nu \left( \frac{\pi}{h} \psi(h \xi_{\nu k}) \right) \psi'(h \xi_{\nu k}) \newline
 \end{align*}$$
 
-where $ x = \pi / h \cdot \psi(t) $, $ \psi(t) = t \tanh(\pi / 2 \cdot \sinh t) $ and $ t = h \xi_{\nu k} $.
+where $ \omega_{\nu k} = Y_{\nu}(\pi \xi_{\nu |k|}) / J_{\nu + 1} (\pi \xi_{\nu |k|}) $, $ x = \pi / h \cdot \psi(t) $, $ \psi(t) = t \tanh(\pi / 2 \cdot \sinh t) $, $ t = h \xi_{\nu k} $, $ h $ is a positive constant, $ \nu $ is a real constant greater than $ -1 $, and $ \xi_{\nu k} $ is the $ |k| $-th zero (counting from the origin) of $ J_{\nu} (\pi x) $ in such a way that
+
+$$ \cdots < \xi_{\nu, -2} < \xi_{\nu, -1} < 0 < \xi_{\nu, 1} < \xi_{\nu, 2} < \cdots; \xi_{\nu, -k} = - \xi_{\nu, k} $$
 
 Set $ x = r \lambda $, so that $ \lambda = x/r $ and $ d\lambda = 1/r \cdot dx $, and $ x = \pi/h \cdot \psi(h \xi_{\nu k}) $, we can reduce:
 
